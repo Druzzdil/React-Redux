@@ -9,7 +9,12 @@ class BookList extends Component {
 renderList(){
     return this.props.books.map((book, i) => {
         return (
-            <ul key={i} className="list-group">{book.title}</ul>
+              <li 
+              key={i} 
+              onClick={() => this.props.selectBook(book)}
+              className="list-group">
+              {book.title}
+              </li>
             )
         })
     }
@@ -17,13 +22,11 @@ renderList(){
   render() {
     return (
       <div>
-        <li className="list-group-item">{this.renderList()}</li>
+        <ul className="list-group-item">{this.renderList()}</ul>
       </div>
     );
   }
 }
-
-
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators({selectBook: selectBook}, dispatch)
